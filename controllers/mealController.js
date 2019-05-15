@@ -35,7 +35,17 @@ meals.delete('/:id', async (req, res) => {
   } catch (error) {
     res.status(400).json({error: error.message})
   }
-})
+});
+
+// EDIT
+meals.put('/:id', async (req, res) => {
+  try {
+    const updateMeal = await Meals.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(updateMeal)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+});
 
 
 module.exports = meals
