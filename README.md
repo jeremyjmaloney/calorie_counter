@@ -1,2 +1,2 @@
 # calorie_counter
-Thad Stinson
+Thad Stinson & Jeremy Maloney
