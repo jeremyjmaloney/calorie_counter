@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js" charset="utf-8"></script>
   <script src="/js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="/css/app.css">
   <title>Calorie Counter</title>
 </head>
 <body ng-controller="MainController as ctrl">
@@ -16,8 +19,12 @@
     <input type="submit" value="ADD">
   </form>
   <div ng-repeat="meal in ctrl.mealsInfo">
-    <h3>{{meal.name}} --- Calories: {{meal.calories}}</h3>
-    <button ng-click="ctrl.deleteMeal(meal)">X</button>
+    <div class="items">
+
+      <h3>{{meal.name}} -- </h3>
+      <h5> Calories: {{meal.calories}}</h5>
+      <button class="delete" ng-click="ctrl.deleteMeal(meal)">X</button>
+    </div>
     <form ng-if="$index === ctrl.indexOfMeal" ng-submit="ctrl.editMeal(meal)">
       <input ng-model="ctrl.updatedName" type="text" placeholder="What did you eat?!">
       <input ng-model="ctrl.updatedCalories" type="text" placeholder="Calories">
