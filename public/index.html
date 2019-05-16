@@ -9,6 +9,21 @@
   <title>Calorie Counter</title>
 </head>
 <body ng-controller="MainController as ctrl">
-  <h1>{{ctrl.test}}</h1>
+  <h1>Calorie Counter</h1>
+  <form ng-submit="ctrl.createMeal()">
+    <input ng-model="ctrl.name" type="text" placeholder="What did you eat?!">
+    <input ng-model="ctrl.calories" type="text" placeholder="Calories">
+    <input type="submit" value="ADD">
+  </form>
+  <div ng-repeat="meal in ctrl.mealsInfo">
+    <h3>{{meal.name}} --- Calories: {{meal.calories}}</h3>
+    <button ng-click="ctrl.deleteMeal(meal)">X</button>
+    <form ng-if="$index === ctrl.indexOfMeal" ng-submit="ctrl.editMeal(meal)">
+      <input ng-model="ctrl.updatedName" type="text" placeholder="What did you eat?!">
+      <input ng-model="ctrl.updatedCalories" type="text" placeholder="Calories">
+      <input type="submit" value="Update">
+    </form>
+    <a href="#" ng-click="ctrl.indexOfMeal = $index">EDIT</a>
+  </div>
 </body>
 </html>
