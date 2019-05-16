@@ -2,6 +2,7 @@ const app = angular.module('CalorieApp', []);
 
 app.controller('MainController', ['$http', function($http){
   let allMeals = [];
+  this.indexOfMeal = null;
 
   this.getMeals = function(){
     $http({
@@ -37,6 +38,22 @@ app.controller('MainController', ['$http', function($http){
       url: '/meals/' + meal._id
     }).then(response=>{
       this.getMeals();
+    }).catch(error=>{
+      console.log(error);
+    });
+  };
+
+  this.editMeal = function(meal){
+    $http({
+      method: 'PUT',
+      url: '/meals/' + meal._id,
+      data: {
+        name: this.updatedName,
+        calories: this.updatedCalories
+      }
+    }).then(response=>{
+      this.getMeals();
+      this.indexOfMeal = null;
     }).catch(error=>{
       console.log(error);
     });
