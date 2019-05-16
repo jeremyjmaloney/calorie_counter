@@ -24,9 +24,19 @@ app.controller('MainController', ['$http', function($http){
         calories: this.calories
       }
     }).then(response=>{
-      console.log(response.data);
       allMeals.push(response.data);
-      console.log(allMeals);
+      this.getMeals();
+    }).catch(error=>{
+      console.log(error);
+    });
+  };
+
+  this.deleteMeal = function(meal){
+    $http({
+      method: 'DELETE',
+      url: '/meals/' + meal._id
+    }).then(response=>{
+      this.getMeals();
     }).catch(error=>{
       console.log(error);
     });

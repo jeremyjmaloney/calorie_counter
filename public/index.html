@@ -15,8 +15,9 @@
     <input ng-model="ctrl.calories" type="text" placeholder="Calories">
     <input type="submit" value="ADD">
   </form>
-  <div ng-repeat="meals in ctrl.mealsInfo">
-    <h3>{{meals.name}} Calories: {{meals.calories}}</h3>
+  <div ng-repeat="meal in ctrl.mealsInfo">
+    <h3>{{meal.name}} --- Calories: {{meal.calories}}</h3>
+    <button ng-click="ctrl.deleteMeal(meal)">X</button>
   </div>
 </body>
 </html>
