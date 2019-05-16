@@ -9,6 +9,14 @@
   <title>Calorie Counter</title>
 </head>
 <body ng-controller="MainController as ctrl">
-  <h1>{{ctrl.test}}</h1>
+  <h1>Calorie Counter</h1>
+  <form ng-submit="ctrl.createMeal()">
+    <input ng-model="ctrl.name" type="text" placeholder="What did you eat?!">
+    <input ng-model="ctrl.calories" type="text" placeholder="Calories">
+    <input type="submit" value="ADD">
+  </form>
+  <div ng-repeat="meals in ctrl.mealsInfo">
+    <h3>{{meals.name}} Calories: {{meals.calories}}</h3>
+  </div>
 </body>
 </html>
